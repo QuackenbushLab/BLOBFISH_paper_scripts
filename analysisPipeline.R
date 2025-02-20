@@ -20,11 +20,11 @@ library(fgsea)
 # networks from each tissue type (downloaded from GRAND), expression for
 # each tissue type (downloaded from GRAND), and the output directory.
 dir_subcutaneous_adipose <- NULL
-dir_expression <- NULL
 dir_skeletal_muscle <- NULL
 dir_skin <- NULL
 dir_lung <- NULL
 dir_aorta <- NULL
+dir_expression <- NULL
 outdir <- NULL
 gmt_pathway_file <- NULL
 null_file <- NULL
