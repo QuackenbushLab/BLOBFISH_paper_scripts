@@ -17,8 +17,10 @@ library(reshape2)
 library(fgsea)
 
 # Modify the directories as needed. These include the directories containing
-# networks from each tissue type (downloaded from GRAND) and the output directory.
+# networks from each tissue type (downloaded from GRAND), expression for
+# each tissue type (downloaded from GRAND), and the output directory.
 dir_subcutaneous_adipose <- NULL
+dir_expression <- NULL
 dir_skeletal_muscle <- NULL
 dir_skin <- NULL
 dir_lung <- NULL
@@ -160,7 +162,7 @@ adiposeSubnet$gene <- unlist(lapply(adiposeSubnet$gene, function(gene){
 }))
 pdf(paste0(outdir, "/subcutaneous_adipose_subnet_updatedNull.pdf"))
 PlotNetwork(network = adiposeSubnet,genesOfInterest = c(muscle_dev_genes, adipogenic_genes),vertexLabels = NULL,
-            layoutBipartite = FALSE,edgeWidth = 0.2, vertexLabelSize = 0.50, geneColorMapping = geneColorMapping)
+            layoutBipartite = FALSE,edgeWidth = 1, vertexLabelSize = 0.50, geneColorMapping = geneColorMapping)
 dev.off()
 
 # Plot skeletal muscle.
@@ -174,7 +176,7 @@ skeletalMuscleSubnet$gene <- unlist(lapply(skeletalMuscleSubnet$gene, function(g
 }))
 pdf(paste0(outdir, "/skeletal_muscle_subnet_updateNull.pdf"),)
 PlotNetwork(network = skeletalMuscleSubnet,genesOfInterest = c(muscle_dev_genes, adipogenic_genes),vertexLabels = NULL,
-            layoutBipartite = FALSE,edgeWidth = 0.2, vertexLabelSize = 0.50, geneColorMapping = geneColorMapping)
+            layoutBipartite = FALSE,edgeWidth = 1, vertexLabelSize = 0.50, geneColorMapping = geneColorMapping)
 dev.off()
 
 # Plot skin.
@@ -188,7 +190,7 @@ skinSubnet$gene <- unlist(lapply(skinSubnet$gene, function(gene){
 }))
 pdf(paste0(outdir, "/skin_subnet_updateNull.pdf"),)
 PlotNetwork(network = skinSubnet, genesOfInterest = c(muscle_dev_genes, adipogenic_genes),vertexLabels = NULL,
-            layoutBipartite = FALSE,edgeWidth = 0.2, vertexLabelSize = 0.50, geneColorMapping = geneColorMapping)
+            layoutBipartite = FALSE,edgeWidth = 1, vertexLabelSize = 0.50, geneColorMapping = geneColorMapping)
 dev.off()
 
 # Plot lung.
@@ -202,7 +204,7 @@ lungSubnet$gene <- unlist(lapply(lungSubnet$gene, function(gene){
 }))
 pdf(paste0(outdir, "/lung_subnet_updateNull.pdf"),)
 PlotNetwork(network = lungSubnet, genesOfInterest = c(muscle_dev_genes, adipogenic_genes),vertexLabels = NULL,
-            layoutBipartite = FALSE,edgeWidth = 0.2, vertexLabelSize = 0.50, geneColorMapping = geneColorMapping)
+            layoutBipartite = FALSE,edgeWidth = 1, vertexLabelSize = 0.50, geneColorMapping = geneColorMapping)
 dev.off()
 
 # Plot aorta.
@@ -216,7 +218,7 @@ aortaSubnet$gene <- unlist(lapply(aortaSubnet$gene, function(gene){
 }))
 pdf(paste0(outdir, "/aorta_subnet_updateNull.pdf"),)
 PlotNetwork(network = aortaSubnet, genesOfInterest = c(muscle_dev_genes, adipogenic_genes),vertexLabels = NULL,
-            layoutBipartite = FALSE,edgeWidth = 0.2, vertexLabelSize = 0.50, geneColorMapping = geneColorMapping)
+            layoutBipartite = FALSE,edgeWidth = 1, vertexLabelSize = 0.50, geneColorMapping = geneColorMapping)
 dev.off()
 
 # Get the exclusive networks.
@@ -228,7 +230,7 @@ write.csv(skeletal_muscle_only, paste0(outdir, "/skeletal_muscle_only_updated.cs
 pdf(paste0(outdir, "/skeletal_muscle_only_updated_withlabels.pdf"))
 PlotNetwork(network = skeletal_muscle_only,genesOfInterest = c(muscle_dev_genes, adipogenic_genes),
             vertexLabels = c(muscle_dev_genes, adipogenic_genes, skeletal_muscle_only$tf),
-            layoutBipartite = FALSE,edgeWidth = 0.2, vertexLabelSize = 0.2, geneColorMapping = geneColorMapping)
+            layoutBipartite = FALSE,edgeWidth = 1, vertexLabelSize = 0.2, geneColorMapping = geneColorMapping)
 dev.off()
 
 subcutaneous_adipose_only <- adiposeSubnet[setdiff(rownames(adiposeSubnet), 
@@ -239,7 +241,7 @@ write.csv(subcutaneous_adipose_only, paste0(outdir, "/subcutaneous_adipose_only_
 pdf(paste0(outdir, "/adipose_only_updated_withlabels.pdf"))
 PlotNetwork(network = subcutaneous_adipose_only,genesOfInterest = c(muscle_dev_genes, adipogenic_genes),
             vertexLabels = c(muscle_dev_genes, adipogenic_genes, subcutaneous_adipose_only$tf),
-            layoutBipartite = FALSE,edgeWidth = 0.2, vertexLabelSize = 0.2, geneColorMapping = geneColorMapping)
+            layoutBipartite = FALSE,edgeWidth = 1, vertexLabelSize = 0.2, geneColorMapping = geneColorMapping)
 dev.off()
 
 skin_only <- skinSubnet[setdiff(rownames(skinSubnet), 
@@ -250,7 +252,7 @@ write.csv(skin_only, paste0(outdir, "/skin_only_updated.csv"))
 pdf(paste0(outdir, "/skin_only_updated_withlabels.pdf"))
 PlotNetwork(network = skin_only,genesOfInterest = c(muscle_dev_genes, adipogenic_genes),
             vertexLabels = c(muscle_dev_genes, adipogenic_genes, skin_only$tf),
-            layoutBipartite = FALSE,edgeWidth = 0.2, vertexLabelSize = 0.2, geneColorMapping = geneColorMapping)
+            layoutBipartite = FALSE,edgeWidth = 1, vertexLabelSize = 0.2, geneColorMapping = geneColorMapping)
 dev.off()
 
 lung_only <- lungSubnet[setdiff(rownames(lungSubnet), 
@@ -261,7 +263,7 @@ write.csv(lung_only, paste0(outdir, "/lung_only_updated.csv"))
 pdf(paste0(outdir, "/lung_only_updated_withlabels.pdf"))
 PlotNetwork(network = lung_only,genesOfInterest = c(muscle_dev_genes, adipogenic_genes),
             vertexLabels = c(muscle_dev_genes, adipogenic_genes, lung_only$tf),
-            layoutBipartite = FALSE,edgeWidth = 0.2, vertexLabelSize = 0.2, geneColorMapping = geneColorMapping)
+            layoutBipartite = FALSE,edgeWidth = 1, vertexLabelSize = 0.2, geneColorMapping = geneColorMapping)
 dev.off()
 
 aorta_only <- aortaSubnet[setdiff(rownames(aortaSubnet), 
@@ -272,7 +274,7 @@ write.csv(aorta_only, paste0(outdir, "/aorta_only_updated.csv"))
 pdf(paste0(outdir, "/aorta_only_updated_withlabels.pdf"))
 PlotNetwork(network = aorta_only,genesOfInterest = c(muscle_dev_genes, adipogenic_genes),
             vertexLabels = c(muscle_dev_genes, adipogenic_genes, aorta_only$tf),
-            layoutBipartite = FALSE,edgeWidth = 0.2, vertexLabelSize = 0.2, geneColorMapping = geneColorMapping)
+            layoutBipartite = FALSE,edgeWidth = 1, vertexLabelSize = 0.2, geneColorMapping = geneColorMapping)
 dev.off()
 
 # Check the average number of TFs connecting a pair of genes.
@@ -329,3 +331,123 @@ write.csv(pathwayResultAdipose[, 1:7], paste0(outdir, "/adipose_only_pathways.cs
 write.csv(pathwayResultSkin[, 1:7], paste0(outdir, "/skin_only_pathways.csv"))
 write.csv(pathwayResultLung[, 1:7], paste0(outdir, "/lung_only_pathways.csv"))
 write.csv(pathwayResultAorta[, 1:7], paste0(outdir, "/aorta_only_pathways.csv"))
+
+# Do pathway analysis for differentially expressed genes only. Modify paths as needed.
+expressionAdipose <- read.csv(paste0(dir_expression, "/Adipose_Subcutaneous.csv"), row.names = 1)
+expressionAdiposeSubset <- expressionAdipose[c(muscle_dev_ensembl, adipogenic_ensembl),
+                                             make.names(c("GTEX-11P82-1726-SM-5Q5AT", "GTEX-11TT1-2426-SM-5EQMK",
+                                                          "GTEX-12126-0426-SM-5Q5AP", "GTEX-12C56-1626-SM-5FQUO",
+                                                          "GTEX-144GM-1926-SM-5LUAN", "GTEX-O5YT-0226-SM-32PK5",
+                                                          "GTEX-QEG5-0326-SM-2S1PB", "GTEX-QESD-1526-SM-2S1QT",
+                                                          "GTEX-S4Q7-1626-SM-3K2AE", "GTEX-SNMC-1326-SM-2XCFK",
+                                                          "GTEX-T5JC-0526-SM-32PM7", "GTEX-WFG8-2326-SM-3GILF",
+                                                          "GTEX-WFG8-2326-SM-5S2UE", "GTEX-XQ3S-1626-SM-4WAYN",
+                                                          "GTEX-YJ8A-0526-SM-5IFHT", "GTEX-ZTX8-1526-SM-5N9GI",
+                                                          "GTEX-ZVTK-0526-SM-5GZWT", "GTEX-ZZ64-1626-SM-5E43W"))]
+expressionMuscle <- read.csv(paste0(dir_expression, "/Skeletal_Muscle.csv"), row.names = 1)
+expressionMuscleSubset <- expressionMuscle[c(muscle_dev_ensembl, adipogenic_ensembl),
+                                           make.names(c("GTEX-11NSD-2026-SM-5HL5U", "GTEX-11P82-1826-SM-5PNYJ",
+                                                        "GTEX-11TT1-2326-SM-5GU6N", "GTEX-12126-0526-SM-5PNW4",
+                                                        "GTEX-12C56-1926-SM-5FQUG", "GTEX-13RTK-1626-SM-5QGQS",
+                                                        "GTEX-144GM-2026-SM-5LU3D", "GTEX-O5YT-1626-SM-32PK6",
+                                                        "GTEX-PW2O-1726-SM-2S1OO", "GTEX-QEG5-0426-SM-2I5GJ",
+                                                        "GTEX-QESD-1626-SM-2S1RB", "GTEX-R55E-0526-SM-2TC6B",
+                                                        "GTEX-S4Q7-1526-SM-3K2AG", "GTEX-SNMC-1426-SM-2XCFM",
+                                                        "GTEX-T5JC-0626-SM-3NMA6", "GTEX-WFG7-2226-SM-3GIKP",
+                                                        "GTEX-WFG8-2426-SM-3GILL", "GTEX-WHSE-0526-SM-4SOJ6",
+                                                        "GTEX-WHSE-0526-SM-5GZZD", "GTEX-WHSE-0526-SM-5HL79",
+                                                        "GTEX-WOFM-1326-SM-3MJFR", "GTEX-XPT6-2026-SM-4B64V",
+                                                        "GTEX-XQ3S-0426-SM-4BOOA", "GTEX-ZA64-2026-SM-5PNXT",
+                                                        "GTEX-ZTX8-1626-SM-51MRY", "GTEX-ZVTK-0626-SM-5GU6Y",
+                                                        "GTEX-ZZ64-1526-SM-5E43K"))]
+expressionLung <- read.csv(paste0(dir_expression, "/Lung.csv"), row.names = 1)
+expressionLungSubset <- expressionLung[c(muscle_dev_ensembl, adipogenic_ensembl),
+                                       make.names(c("GTEX-12WSE-0826-SM-5S2VL", "GTEX-144GM-0126-SM-5Q5AX",
+                                                    "GTEX-O5YT-0526-SM-32PK8", "GTEX-PW2O-0526-SM-2I3DX",
+                                                    "GTEX-QEG5-1126-SM-2I5GH", "GTEX-QEG5-1126-SM-33HC2",
+                                                    "GTEX-QEG5-1126-SM-5SI88", "GTEX-QESD-0626-SM-2I5G4",
+                                                    "GTEX-S4Q7-0426-SM-3K2BJ", "GTEX-T5JC-0826-SM-32PMC",
+                                                    "GTEX-WFG7-0526-SM-3GIKI", "GTEX-WFG8-0926-SM-3GIKJ",
+                                                    "GTEX-WOFM-0126-SM-3MJFE", "GTEX-XQ3S-0926-SM-4BOPI",
+                                                    "GTEX-ZA64-0326-SM-5HL8T"))]
+expressionSkin <- read.csv(paste0(dir_expression, "/Skin.csv"), row.names = 1)
+expressionSkinSubset <- expressionSkin[c(muscle_dev_ensembl, adipogenic_ensembl),
+                                       make.names(c("GTEX-11NSD-0626-SM-5A5LU", "GTEX-11NSD-2226-SM-5986V",
+                                                    "GTEX-11P82-1426-SM-5BC5L", "GTEX-11P82-1626-SM-59879",
+                                                    "GTEX-11TT1-1826-SM-5EQLV", "GTEX-11TT1-2526-SM-5EGIB",
+                                                    "GTEX-12126-0326-SM-5PNW3", "GTEX-12126-0826-SM-5FQTZ",
+                                                    "GTEX-12C56-1526-SM-5FQUQ", "GTEX-12C56-1726-SM-5EQ61",
+                                                    "GTEX-O5YT-0126-SM-48TBW", "GTEX-QEG5-0226-SM-2I5GI",
+                                                    "GTEX-QESD-1426-SM-2S1R9", "GTEX-R55E-0126-SM-2TC5Y",
+                                                    "GTEX-SNMC-1226-SM-2XCFP", "GTEX-T5JC-0426-SM-32PLO",
+                                                    "GTEX-WFG7-2026-SM-3GIL7", "GTEX-WFG7-2026-SM-5SI7P",
+                                                    "GTEX-WFG8-2126-SM-3GIKQ", "GTEX-WFG8-2226-SM-3GIL9",
+                                                    "GTEX-WHSE-0126-SM-3NMBT", "GTEX-XQ3S-1426-SM-4BOPR",
+                                                    "GTEX-XQ3S-1526-SM-4BOOC", "GTEX-YJ8A-0426-SM-5IFID",
+                                                    "GTEX-ZA64-1026-SM-5HL8R", "GTEX-ZTX8-1326-SM-4YCEL",
+                                                    "GTEX-ZTX8-1426-SM-5DUVO", "GTEX-ZVTK-0226-SM-51MRG",
+                                                    "GTEX-ZVTK-0426-SM-51MRS", "GTEX-ZZ64-1026-SM-5GZXG",
+                                                    "GTEX-ZZ64-1726-SM-5GZYB"))]
+expressionAorta <- read.csv(paste0(dir_expression, "/Artery_Aorta.csv"), row.names = 1)
+expressionAortaSubset <- expressionAorta[c(muscle_dev_ensembl, adipogenic_ensembl),
+                                         make.names(c("GTEX-11P82-0126-SM-5HL72", "GTEX-11TT1-1226-SM-5Q5AV",
+                                                      "GTEX-12C56-0226-SM-5N9FB", "GTEX-13RTK-0126-SM-5RQHQ",
+                                                      "GTEX-O5YT-0426-SM-3MJHD", "GTEX-PW2O-0426-SM-48TCC",
+                                                      "GTEX-QEG5-1226-SM-447AR", "GTEX-QESD-0426-SM-4R1JZ",
+                                                      "GTEX-R55E-1126-SM-48FDZ", "GTEX-T5JC-0326-SM-4DM5C",
+                                                      "GTEX-WFG7-0926-SM-4LMK7", "GTEX-WFG8-0826-SM-4LVN5",
+                                                      "GTEX-XPT6-0326-SM-4B66V", "GTEX-XQ3S-0126-SM-4BOO9",
+                                                      "GTEX-ZA64-0126-SM-5HL8Z"))]
+# Formula for log fold change.
+calculateLogFoldChange <- function(expressionCase, expressionControl){
+  return(rowMeans(log2(expressionCase)) - rowMeans(log2(expressionControl)))
+}
+
+# Calculate log fold changes.
+logFCAdipose <- calculateLogFoldChange(expressionAdiposeSubset, 
+                                       do.call(cbind, list(expressionMuscleSubset,
+                                                           expressionAortaSubset,
+                                                           expressionSkinSubset,
+                                                           expressionLungSubset)))
+write.csv(logFCAdipose, paste0(dir_expression, "/adiposeLogFC.csv"))
+logFCMuscle <- calculateLogFoldChange(expressionMuscleSubset, 
+                                      do.call(cbind, list(expressionAdiposeSubset,
+                                                          expressionAortaSubset,
+                                                          expressionSkinSubset,
+                                                          expressionLungSubset)))
+write.csv(logFCMuscle, paste0(dir_expression, "/muscleLogFC.csv"))
+logFCAorta <- calculateLogFoldChange(expressionAortaSubset, 
+                                     do.call(cbind, list(expressionAdiposeSubset,
+                                                         expressionMuscleSubset,
+                                                         expressionSkinSubset,
+                                                         expressionLungSubset)))
+write.csv(logFCAorta, paste0(dir_expression, "/aortaLogFC.csv"))
+logFCLung <- calculateLogFoldChange(expressionLungSubset, 
+                                    do.call(cbind, list(expressionAdiposeSubset,
+                                                        expressionMuscleSubset,
+                                                        expressionSkinSubset,
+                                                        expressionAortaSubset)))
+write.csv(logFCLung, paste0(dir_expression, "/lungLogFC.csv"))
+logFCSkin <- calculateLogFoldChange(expressionSkinSubset, 
+                                    do.call(cbind, list(expressionAdiposeSubset,
+                                                        expressionMuscleSubset,
+                                                        expressionLungSubset,
+                                                        expressionAortaSubset)))
+write.csv(logFCSkin, paste0(dir_expression, "/skinLogFC.csv"))
+
+
+# Do pathway analysis.
+doPathwayAnalysis <- function(logFC, file){
+  names(logFC) <- c(muscle_dev_genes, adipogenic_genes)
+  str(logFC)
+  res <- fgsea::fgsea(pathways = pathways, stats = logFC,
+                      scoreType = "pos", maxSize = 500)
+  str(res)
+  write.csv(res[,c("pathway", "pval", "padj", "log2err", "ES", "NES", "size")], 
+            file)
+}
+doPathwayAnalysis(logFCAdipose,  paste0(dir_expression, "/pathwayResultAdipose.csv"))
+doPathwayAnalysis(logFCMuscle, paste0(dir_expression, "/pathwayResultMuscle.csv"))
+doPathwayAnalysis(logFCAorta, paste0(dir_expression, "/pathwayResultAorta.csv"))
+doPathwayAnalysis(logFCLung, paste0(dir_expression, "/pathwayResultLung.csv"))
+doPathwayAnalysis(logFCSkin, paste0(dir_expression, "/pathwayResultSkin.csv"))
