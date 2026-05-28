@@ -43,6 +43,10 @@
     -   **output_file:** The directory where you wish to save the random subsets of genes.
     -   **randset_file:** The directory containing the random subsets of genes.
 
+1. Run ensemblTFsAndDescriptions.R to add ENSEMBL IDs and descriptive gene names to BLOBFISH results, specifying the following variables:
+
+    -   **blobfishDir:** The directory where the BLOBFISH results are stored.
+    -   **motifFile:** The directory containing the motif prior file from GRAND.
 
 ## Comparison to Genes2Networks
 
