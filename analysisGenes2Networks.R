@@ -1,8 +1,9 @@
 library(igraph)
 
 # Read in the results from Genes2Networks.
-indir <- "/Users/tae771/Library/CloudStorage/OneDrive-HarvardUniversity/Documents/postdoc/BLOBFISH_results/Genes2Networks_results/"
-outdir <- "/Users/tae771/Library/CloudStorage/OneDrive-HarvardUniversity/Documents/postdoc/BLOBFISH_results/Genes2Networks_results/"
+indir <- NULL
+outdir <- NULL
+blobfishDir <- NULL
 skinSubnet <- read.table(paste0(outdir, "/skinOut.sig"))[,c("V1", "V6")]
 skeletalMuscleSubnet <- read.table(paste0(outdir, "/muscleOut.sig"))[,c("V1", "V6")]
 lungSubnet <- read.table(paste0(outdir, "/lungOut.sig"))[,c("V1", "V6")] 
@@ -134,7 +135,6 @@ tfCountAllPairsAortaAdipose <- TFCountAllPairs(adipogenic_genes, aortaOnly)
 print(mean(tfCountAllPairsAortaAdipose))
 
 # Compare to BLOBFISH results.
-blobfishDir <- "/Users/tae771/Library/CloudStorage/OneDrive-HarvardUniversity/Documents/postdoc/GRAND_BLOBFISH_results/"
 lungBlobfish <- read.csv(paste0(blobfishDir, "lungSubnet_05_updatedNull_moreGenes.csv"), row.names = 1)
 adiposeBlobfish <- read.csv(paste0(blobfishDir, "adiposeSubnet_05_updatedNull_moreGenes.csv"), row.names = 1)
 aortaBlobfish <- read.csv(paste0(blobfishDir, "aortaSubnet_05_updatedNull_moreGenes.csv"), row.names = 1)

@@ -5,8 +5,8 @@ library(igraph)
 library("org.Hs.eg.db")
 
 # Read in the filtered networks.
-indir <- "/Users/tae771/Library/CloudStorage/OneDrive-HarvardUniversity/Documents/postdoc/BLOBFISH_results/Genes2Networks_results/"
-outdir <- "/Users/tae771/Library/CloudStorage/OneDrive-HarvardUniversity/Documents/postdoc/BLOBFISH_results/SP_results/"
+indir <- NULL
+outdir <- NULL
 dir.create(outdir)
 adipose <- read.table(paste0(indir, "/subcutaneous_adipose.sig"))[,c("V1", "V6")]
 aorta <- read.table(paste0(indir, "/aorta.sig"))[,c("V1", "V6")]

@@ -3,8 +3,8 @@ library("org.Hs.eg.db")
 library("AnnotationDbi")
 
 # Set paths.
-blobfishDir <- "/Users/tae771/Library/CloudStorage/OneDrive-HarvardUniversity/Documents/postdoc/GRAND_BLOBFISH_results/"
-motifFile <- "/Users/tae771/Library/CloudStorage/OneDrive-HarvardUniversity/Documents/postdoc/Roaa/Null_PANDA_prior/tissues_motif.txt"
+blobfishDir <- NULL
+motifFile <- NULL
 
 # Load BLOBFISH networks
 lungBlobfish <- read.csv(paste0(blobfishDir, "lungSubnet_05_updatedNull_moreGenes.csv"), row.names = 1)

@@ -105,8 +105,6 @@
 
 
 ## eQTL Analysis
-
-## Sparse Network Analysis
        
 
 
