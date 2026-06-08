@@ -14,8 +14,8 @@ library("org.Hs.eg.db")
 library(reshape2)
 
 # Read in the p-value files. We will use these to filter the networks for input to Genes2Networks.
-indir <- "/Users/tae771/Library/CloudStorage/OneDrive-HarvardUniversity/Documents/postdoc/GRAND_BLOBFISH_results/"
-outdir <- "/Users/tae771/Library/CloudStorage/OneDrive-HarvardUniversity/Documents/postdoc/BLOBFISH_results/Genes2Networks_results/"
+indir <- NULL
+outdir <- NULL
 dir.create(outdir)
 skin <- readRDS(paste0(indir, "/skinPval.RDS"))
 subcutaneous_adipose <- readRDS(paste0(indir, "/adiposePval.RDS"))

@@ -17,9 +17,10 @@ library(reshape2)
 library(fgsea)
 
 # Read in the files from the eQTL directory.
-eqtlDir <- "/Users/tae771/Library/CloudStorage/OneDrive-HarvardUniversity/Documents/postdoc/BLOBFISH_results/eQTL_Fagny_Platig/transfer_12832847_files_a8bd48e5/"
-dummyPDir <- "/Users/tae771/Library/CloudStorage/OneDrive-HarvardUniversity/Documents/postdoc/BLOBFISH_results/eQTL_Fagny_Platig/dummyPvals/"
-ref <- as.data.frame(fread("/Users/tae771/Library/CloudStorage/OneDrive-HarvardUniversity/Documents/postdoc/gencode.v49.annotation.bed"))
+eqtlDir <- NULL
+dummyPDir <- NULL
+refFile <- NULL
+ref <- as.data.frame(fread(refFile))
 dir.create(dummyPDir)
 
 # Function to build BLOBFISH formatted networks

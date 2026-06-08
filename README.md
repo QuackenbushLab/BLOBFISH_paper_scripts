@@ -50,7 +50,11 @@
 
 ## Comparison to Genes2Networks
 
-1. Run prepareOutputsForGenes2Networks.R.
+1. Run prepareOutputsForGenes2Networks.R, modifying the following:
+
+    -   **indir:** The directory where your BLOBFISH p-value files are stored.
+    -   **outdir:** The directory where you wish to save your formatted significance files.
+
 1. Clone the Genes2Networks repository using the command `git clone git@github.com:MaayanLab/Genes2Networks.git`.
 2. [Install Java](https://www.java.com/en/download/).
 3. [Install Gradle](https://docs.gradle.org/current/userguide/installation.html).
@@ -101,10 +105,21 @@
 
 ## Comparison to SP
 1. Run prepareOutputsForGenes2Networks.R.
-2. Run analysisPipelineSP.R.
 
+    -   **indir:** The directory where your BLOBFISH p-value files are stored.
+    -   **outdir:** The directory where you wish to save your formatted significance files.
+
+2. Run analysisPipelineSP.R, modifying the following:
+
+    -   **indir:** The directory where your significant edges (computed using BLOBFISH) are saved.
+    -   **outdir:** The directory where you wish to save your results from the analysis of SP.
 
 ## eQTL Analysis
-       
+1. Obtain the eQTL networks.
+2. Obtain the GENCODE reference file from the website: https://www.gencodegenes.org/human/.
+2. Run analysisPipeline_eQTL.R, modifying the following:
 
+    -   **indir:** The directory where your eQTL networks are saved.
+    -   **outdir:** The directory where you wish to save your results from eQTL analysis.
+    -   **refFile:** The GENCODE reference file path.
 
