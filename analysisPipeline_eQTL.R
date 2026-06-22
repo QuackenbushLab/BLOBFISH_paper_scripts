@@ -327,3 +327,19 @@ PlotNetwork(network = skinConsol,genesOfInterest = c(muscle_dev_genes, adipogeni
             layoutBipartite = FALSE,edgeWidth = 1, vertexLabelSize = 1, geneColorMapping = geneColorMapping,
             nodeSize = 3)
 dev.off()
+
+# Analyze why the adipogenic genes did not overlap by looking at the original eQTLs.
+adiposeAdipose <- adipose[which(adipose$gene %in% adipogenic_ensembl),]
+aortaAdipose <- aortaAdipose[which(aorta$gene %in% adipogenic_ensembl),]
+muscleAdipose <- muscle[which(muscle$gene %in% adipogenic_ensembl),]
+lungAdipose <- lung[which(lung$gene %in% adipogenic_ensembl),]
+skinAdipose <- skin[which(skin$gene %in% adipogenic_ensembl),]
+adiposeAdiposeOnly <- adiposeAdipose[setdiff(rownames(adiposeAdipose), c(rownames(lungAdipose), rownames(muscleAdipose), rownames(skinAdipose), rownames(aortaAdipose)))]
+adiposeAdiposeOnlyGenes <- adiposeAdiposeOnly
+adiposeAdiposeOnlyGenes$gene <- unlist(lapply(adiposeAdiposeOnly$gene, function(gene){
+  return(adipogenic_genes[which(adipogenic_ensembl == gene)])
+}))
+
+PlotNetwork(network = adiposeAdiposeOnlyGenes, genesOfInterest = adipogenic_genes, 
+            vertexLabels = adipogenic_genes, layoutBipartite = FALSE, edgeWidth = 1, vertexLabelSize = 0.5,
+            geneColorMapping = geneColorMapping, nodeSize = 3)
